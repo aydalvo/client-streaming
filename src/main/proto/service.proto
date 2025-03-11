@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package banking;
+
+option java_multiple_files = true;
+option java_package = "com.proto.generated.banking";
+
+// Message representing a client's message in a chat system
+message ChatMessage {
+  string sender = 1;
+  string message = 2;
+}
+
+// Message representing a server's response in a chat system
+message ChatResponse {
+  string sender = 1;
+  string message = 2;
+}
+
+// Service for bidirectional streaming for chat support
+service ChatService {
+  rpc StartChat (stream ChatMessage) returns (stream ChatResponse) {}
+}
